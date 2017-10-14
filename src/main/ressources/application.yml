@@ -1,7 +1,7 @@
 spring:
   cache:
   cache-names: Customer
-#    type: simple
+#   type: simple
 #   type: redis
    type: jcache
    jcache:
