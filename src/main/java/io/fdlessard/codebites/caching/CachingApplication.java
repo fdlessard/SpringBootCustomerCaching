@@ -13,13 +13,11 @@ public class CachingApplication {
         SpringApplication.run(CachingApplication.class, args);
     }
 
-
     @Bean
     public CustomerKeyGenerator customerKeyGenerator() {
         // configure and return an implementation of Spring's KeyGenerator SPI
         return new CustomerKeyGenerator();
     }
-
 
     @Bean
     public CustomerJCacheManagerCustomizer cacheManagerCustomizer() {

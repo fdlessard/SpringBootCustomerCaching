@@ -14,8 +14,6 @@ public class CustomerKeyGenerator implements KeyGenerator {
 
         LOGGER.info("CustomerKeyGenerator.generate() - {}, {},{}", o, method, params);
 
-
-
         StringBuilder sb = new StringBuilder();
         sb.append("Prefix-");
 
@@ -27,6 +25,5 @@ public class CustomerKeyGenerator implements KeyGenerator {
         LOGGER.info("CustomerKeyGenerator.generate() - {}", sb.toString());
 
         return sb.toString();
-
     }
 }

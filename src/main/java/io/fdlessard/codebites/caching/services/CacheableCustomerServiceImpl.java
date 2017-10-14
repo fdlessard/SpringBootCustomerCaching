@@ -9,7 +9,6 @@ import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import javax.crypto.KeyGenerator;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -78,5 +77,4 @@ public class CacheableCustomerServiceImpl extends CustomerServiceImpl {
 
         return (Customer) valueWrapper.get();
     }
-
 }
