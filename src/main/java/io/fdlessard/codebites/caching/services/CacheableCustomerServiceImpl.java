@@ -1,5 +1,6 @@
 package io.fdlessard.codebites.caching.services;
 
+import io.fdlessard.codebites.caching.CustomerKeyGenerator;
 import io.fdlessard.codebites.caching.domain.Customer;
 import io.fdlessard.codebites.caching.repositories.CustomerRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -8,6 +9,7 @@ import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import javax.crypto.KeyGenerator;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,14 +22,19 @@ public class CacheableCustomerServiceImpl extends CustomerServiceImpl {
 
     private CacheManager cacheManager;
 
-    public CacheableCustomerServiceImpl(CustomerRepository customerRepository, CacheManager cacheManager) {
+    private CustomerKeyGenerator customerKeyGenerator;
+
+    public CacheableCustomerServiceImpl(CustomerRepository customerRepository,
+                                        CacheManager cacheManager,
+                                        CustomerKeyGenerator customerKeyGenerator) {
 
         super(customerRepository);
         this.cacheManager = cacheManager;
+        this.customerKeyGenerator = customerKeyGenerator;
     }
 
     @Override
-    @Cacheable(value = "Customer")
+    @Cacheable(value = "Customer", keyGenerator = "customerKeyGenerator")
     public Customer getCustomerById(long id) {
         LOGGER.info("CacheableCustomerServiceImpl.getById({})", id);
         return super.getCustomerById(id);
@@ -55,7 +62,7 @@ public class CacheableCustomerServiceImpl extends CustomerServiceImpl {
 
         for (Customer customer : uncachedCustomers) {
             customerMap.put(customer.getId(), customer);
-            cache.put(customer.getId(), customer);
+            cache.put(customerKeyGenerator.generate(null, null, customer.getId()), customer);
         }
 
         return ids.stream().map(customerMap::get).collect(Collectors.toList());
