@@ -1,0 +1,10 @@
+spring:
+  cache:
+    type: simple
+
+#    cache-names=customers
+#    type=none
+#  redis
+#    host=localhost
+#    port=6379
+
