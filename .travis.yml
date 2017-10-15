@@ -11,11 +11,12 @@ addons:
   sonarcloud:
     organization: "fdlessard-github"
     token:
-      secure: "koGloewCRNDNNAg5/zeks+RYul5KTGY1756B22hD/w/m+MB5mq7CjctIxMpO14Zp7/lWBUMqaczx0CVZsO7JRDNWuqZ2iE/WMUEIX31PKJGurAbIDPvu/e5xbjksyVkUhN0cGwwp3HbLqG8tiApX+4yWSJI/FHLxW/llLf4JeZKxpSDYRlnykLCx6gxiOaP3qtman5hXCqxcHekROTN1ZKKF/BS7+RVzvyVhFPRw5757Uq66OusDSPyVP0/xkCx8b03xUbRzujVMrNn0eTVEvjOWZpA3f8p2UaaYpjuQECq9LXZ/a9Dr5P2Dm7Mx1dZ91W+4cH+rYmGy/37w1pkbLg7m2ftbBs+xNmyXhj6giVp4RhPOo3va9VQE+QOf4hKlcF+wcUViH/za+/OwYzn6u4H5uqS0s2zxMz8YEVyNsAEFPANRsM0S7EBdrJfL86g5mjyNbPZ2sqV+EwV98q41c5JHCtfbUJQmwVKFkURrUlu2/wUzHJOPJW/KumjNV7sZlyxeI8oRaemAiOa1o8Jb3c8skEjX+UTHTW/HyuHHEMzjmSAby600npOUZ5ZvgQqdH7sK5wZENLridaabgPzc1UQ29mSxcXUkjgxz4DVc5yk93xdybMedSej7YxCo2OHDE4hg+nkfcYDRZOTR4ioDzvaJ7ssvxWH3cwofCxyGuFg="
-    coverity_scan:
-      project:
-        name: "fdlessard/SpringBootCustomerCaching"
-        description: "<Your project description here>"
+      secure: "HHwlWKlcRfW/zaGR2rgiGX0X6mReuO34+pqMd0xTpAOhDHWYDi7z7o0fFYhXioUBerYE2B2G0ZEGmr7pRXNVa4HTT4JnxzLf0T/1ItSxvbS5YAyKrQfVfnEDKi90lOW6Mw6UeQMlQUs+GZcTzYpdWagsyMgjUbf+eiIDeli0fGPo9t4uyTBFhpvfP+fXjgc4VRfAE1CXFp59WhnQqxDyMD5nf6ttSXIWJ2NXFvVO2JEdZR4r5biswsy7i2/l7xj7ZVJVZrmM739L5o3m5K/eHO8o5598aOwdfoqDHPJ0Gloq8IRLaOzHqecEmuftv2ZLuKOPZ7fgk9MzzWUJR4J7C1s8nYSgNq6N2UdD1kRGKHfXuy1XYXcPetTHIb1C6jA//7i76Jxr8fDEXWyTjNhFsVuBfb9jL+qJNDmt9uh1sd+xZ2OFSe4J9EXK8Xhs2xQQcTJYifpVwBV09BxTeabg8/GRNolr7am4B7lkd+8v24kHWnqTKRBtC3EHMAHwIYS+MQh6JyCWNcgKr4P3ZyOS9uKDJaWPGtp6QMV98BPDwikaHeDVIAKdPhXxcsYDeb9hGfeNtGhMZJFmGuuJSB2pXWzDBHbO28+7VFTw6M3fLO5/SQ1kGQLxdGyOaS3/vMKffHlAQeob4znTHmXwC6my6mDzYrdkxq0QFEjw0gGF9ik="
+
+  coverity_scan:
+    project:
+      name: "fdlessard/SpringBootCustomerCaching"
+      description: "<Your project description here>"
       notification_email: fdlessard+gh@gmail.com
       build_command_prepend: "<Your build preprocessing command here>"
       build_command:   "<Your build command here>"
@@ -33,14 +34,12 @@ cache:
 
 
 
-    env:
-      global:
-       # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
-       #   via the "travis encrypt" command using the project repo's public key
-       - secure: "f28+jwAYl9umBK5PHLDmXHpGoOWhHUTYFCqVoOUEXn5Rocu+tVHlodDfcWbPsyWWKtWezO3mkTUskoi6qmy2aN3qbT0SNLJqQTdoEe+fbNQLjyx30RMWQwEE1C+iofHpx3dvxMXyUYygFBiPvJTEHamPfKWl2YtLv8VkLNmnLHoLU3y29RsMvFDAG/kH2LT3XHEKhCPq7x4NKUk6A5WwnukS9BqgprsL72sdwyHOhfdFISTyrJ13+HCDUeelQoh+ipKdNqubpPb7yj8JhHJ55jXEe4BcuOll/AygQacyNOHwm+fO9hClxY20NCfHCCBKfau3mdlQwM7aS66Ma+ZnW3CLZCMakVkxQrxd316qYtzNB/snL33cySoIJJR1TDxRcPzWvOwY9aJMn8s2ZEjFvZudHp0E91aqOTkf1xTdVSvVv7zbWHY8ql34FyXSfvm52HGa5i1Gkzj3xWoVWzoWxUiZU6yaXhQEXQ1K+SgbeffL+YA0YyJJ/QGT7+a/NTDpAzWaP3S0uxTNZ1or1mugo+KmZNiQ+KAivAtvQsJcGj+XmG3qwPhbuVQIk236Hwcn2ivdo5LFfShlMM4rSjeyuxNkHwAuOHf4Ped4xkP8yOxm9n3vwZ6gQnKTn4hDF8hUX0CuY/oqO/l+rjqe5pQLJnK9ShmvFfiNgQDl43ytEtY="
+env:
+  global:
+  # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+  #   via the "travis encrypt" command using the project repo's public key
+    - secure: "f28+jwAYl9umBK5PHLDmXHpGoOWhHUTYFCqVoOUEXn5Rocu+tVHlodDfcWbPsyWWKtWezO3mkTUskoi6qmy2aN3qbT0SNLJqQTdoEe+fbNQLjyx30RMWQwEE1C+iofHpx3dvxMXyUYygFBiPvJTEHamPfKWl2YtLv8VkLNmnLHoLU3y29RsMvFDAG/kH2LT3XHEKhCPq7x4NKUk6A5WwnukS9BqgprsL72sdwyHOhfdFISTyrJ13+HCDUeelQoh+ipKdNqubpPb7yj8JhHJ55jXEe4BcuOll/AygQacyNOHwm+fO9hClxY20NCfHCCBKfau3mdlQwM7aS66Ma+ZnW3CLZCMakVkxQrxd316qYtzNB/snL33cySoIJJR1TDxRcPzWvOwY9aJMn8s2ZEjFvZudHp0E91aqOTkf1xTdVSvVv7zbWHY8ql34FyXSfvm52HGa5i1Gkzj3xWoVWzoWxUiZU6yaXhQEXQ1K+SgbeffL+YA0YyJJ/QGT7+a/NTDpAzWaP3S0uxTNZ1or1mugo+KmZNiQ+KAivAtvQsJcGj+XmG3qwPhbuVQIk236Hwcn2ivdo5LFfShlMM4rSjeyuxNkHwAuOHf4Ped4xkP8yOxm9n3vwZ6gQnKTn4hDF8hUX0CuY/oqO/l+rjqe5pQLJnK9ShmvFfiNgQDl43ytEtY="
 
-    before_install:
-          - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
-
-    addons:
+  before_install:
+    - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
 
