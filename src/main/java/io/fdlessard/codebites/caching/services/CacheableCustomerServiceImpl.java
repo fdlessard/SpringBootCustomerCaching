@@ -9,8 +9,6 @@ import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -46,22 +44,19 @@ public class CacheableCustomerServiceImpl extends CustomerServiceImpl {
 
         Cache cache = cacheManager.getCache("Customer");
 
-        Map<Long, Customer> customerMap = new HashMap<>();
-        List<Long> uncachedCustomerIds = new ArrayList<>();
-        for (Long id : ids) {
-            Customer customer = getCachedCustomerById(cache, id);
-            if (customer != null) {
-                customerMap.put(id, customer);
-            } else {
-                uncachedCustomerIds.add(id);
-            }
-        }
+        Map<Long, Customer> customerMap = ids.stream()
+                .collect(Collectors.toMap(id -> id, id -> getCachedCustomerById(cache, id)));
+
+        List<Long> uncachedCustomerIds = customerMap.entrySet().stream()
+                .filter(e -> e.getValue() == null)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
 
         List<Customer> uncachedCustomers = super.getCustomers(uncachedCustomerIds);
 
         for (Customer customer : uncachedCustomers) {
             customerMap.put(customer.getId(), customer);
-            cache.put(customerKeyGenerator.generate(null, null, customer.getId()), customer);
+            cache.put(generateKey(customer), customer);
         }
 
         return ids.stream().map(customerMap::get).collect(Collectors.toList());
@@ -76,5 +71,9 @@ public class CacheableCustomerServiceImpl extends CustomerServiceImpl {
         }
 
         return (Customer) valueWrapper.get();
+    }
+
+    private Object generateKey(Customer customer) {
+        return customerKeyGenerator.generate(null, null, customer.getId());
     }
 }
